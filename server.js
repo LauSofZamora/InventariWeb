@@ -1,34 +1,25 @@
-const mysql = require('mysql2');
-const fs = require('fs');
+require('dotenv').config();
+const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 
-// Configuración de conexión a la base de datos
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    multipleStatements: true  // Permite multiples comandos
+const db = require('./config/database'); // Configuración de la base de datos
+const authRoutes = require('./api/routes/auth'); // Rutas de autenticación
 
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Configuración de middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Servir archivos estáticos desde el directorio "public"
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rutas de la API
+app.use('/api/auth', authRoutes);
+
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
 });
-
-// // Leer y ejecutar el archivo schema.sql
-const schemaPath = path.join(__dirname, 'database', 'schema.sql');
-const schema = fs.readFileSync(schemaPath, 'utf8');
-
-// Conectar a la BD
-db.connect(err => {
-    if (err) {
-        console.error('Error al conectar con MySQL:', err.message);
-        return;
-    }
-    console.log('Conexión exitosa a MySQL.');
-
-    db.query(schema, (err, result) => {
-        if (err) {
-            console.error('Error al ejecutar el esquema:', err.message);
-            return;
-        }
-        console.log('Esquema de base de datos ejecutado correctamente.');
-    });
-});
-
