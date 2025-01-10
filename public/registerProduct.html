@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Producto</title>
+</head>
+<body>
+    <div>
+        <h1>Registrar Producto</h1>
+        <form id="productForm">
+            <input type="text" name="nombre" placeholder="Nombre del producto" required />
+            <textarea name="caracteristicas" placeholder="Características"></textarea>
+            <input type="number" name="precio" placeholder="Precio" required />
+            <input type="number" name="cantidad" placeholder="Cantidad" required />
+            <input type="text" name="imagen" placeholder="URL de la imagen" />
+            <button type="submit">Registrar</button>
+        </form>
+        <script src="js/registerProduct.js"></script>
+    </div> 
+
+    <!-- Lista de productos -->
+    <div id="productList">
+        <!-- Los productos aparecerán aquí -->
+    </div>
+
+    <div id="editForm" style="display:none;">
+        <h2>Editar Producto</h2>
+        <form id="editProductForm" onsubmit="editProduct(event)">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="editNombre" required>
+            <label for="caracteristicas">Características:</label>
+            <input type="text" name="caracteristicas" id="editCaracteristicas">
+            <label for="precio">Precio:</label>
+            <input type="number" name="precio" id="editPrecio" required>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" name="cantidad" id="editCantidad" required>
+            <label for="imagen">Imagen:</label>
+            <input type="text" name="imagen" id="editImagen">
+            <button type="submit">Guardar cambios</button>
+        </form>
+    </div>
+
+</body>
+</html>

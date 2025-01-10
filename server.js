@@ -1,25 +1,33 @@
-require('dotenv').config();
 const express = require('express');
-const path = require('path');
+const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const path = require('path');
+const db = require('./config/database');
+const authRoutes = require('./api/routes/auth');
+const productRoutes = require('./api/routes/products');
 
-const db = require('./config/database'); // Configuración de la base de datos
-const authRoutes = require('./api/routes/auth'); // Rutas de autenticación
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-// Configuración de middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-// Servir archivos estáticos desde el directorio "public"
+// Configuración para servir archivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rutas de la API
+// Middleware para parsear JSON y formularios
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Rutas para la API
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+
+// Ruta para servir la página de inicio de sesión (login.html)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html')); 
+});
 
 // Iniciar el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en puerto ${PORT}`);
+app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
 });

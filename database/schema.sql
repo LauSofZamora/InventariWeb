@@ -12,17 +12,17 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 
 -- Crear la tabla de productos
-CREATE TABLE IF NOT EXISTS productos (
+CREATE TABLE productos (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    nombre VARCHAR(100) NOT NULL,
+    id_usuario INT,
+    nombre VARCHAR(100),
     caracteristicas TEXT,
-    precio DECIMAL(10,2) NOT NULL,
-    cantidad INT NOT NULL,
+    precio DECIMAL(10, 2),
+    cantidad INT,
     imagen VARCHAR(255),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    archivado BOOLEAN DEFAULT FALSE,  -- Campo para archivar el producto
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
-);
 
 -- Crear la tabla de ventas
 CREATE TABLE IF NOT EXISTS ventas (
