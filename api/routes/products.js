@@ -39,7 +39,7 @@ router.get('/', verifyToken, async (req, res) => {
 router.put('/:id', verifyToken, async (req, res) => {
     const { id } = req.params;
     const { nombre, caracteristicas, precio, cantidad, imagen } = req.body;
-    const userId = req.user.id; // ID del usuario autenticado
+    const userId = req.user.id;
 
     if (!nombre || !precio || !cantidad) {
         return res.status(400).json({ message: 'Faltan datos obligatorios.' });

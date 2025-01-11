@@ -189,3 +189,4 @@ async function editProduct(event) {
         console.error('Error al actualizar el producto:', error);
     }
 }
+

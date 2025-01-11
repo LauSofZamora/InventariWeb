@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar reportes</title>
+</head>
+<body>
+    <h1>Generar reportes</h1>
+
+    <section id="reportSection">
+        <form id="reportForm">
+            <label for="startDate">Fecha de inicio:</label>
+            <input type="date" id="startDate" name="startDate" required>
+
+            <label for="endDate">Fecha de fin:</label>
+            <input type="date" id="endDate" name="endDate" required>
+
+            <label for="productFilter">Filtrar por producto (opcional):</label>
+            <select id="productFilter" name="productFilter">
+                <option value="">Todos los productos</option>
+                <!-- Las opciones se llenarán dinámicamente -->
+            </select>
+
+            <button type="submit">Generar reporte</button>
+        </form>
+    </section>
+
+    <section id="reportResults">
+        <h2>Resultados del reporte</h2>
+        <table id="reportTable">
+            <thead>
+                <tr>
+                    <th>ID venta</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los resultados del reporte se llenarán dinámicamente -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="js/generateReports.js"></script>
+</body>
+</html>
