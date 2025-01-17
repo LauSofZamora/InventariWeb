@@ -3,19 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar venta</title>
+    <title>InventoriWeb</title>
+    <link rel="icon" href="assets/Logo InventoriWeb favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/sales.css">
 </head>
 <body>
-    
-    <form id="salesForm">
-        <label for="id_producto">Producto:</label>
-        <select id="id_producto" name="id_producto"></select>
-    
-        <label for="quantity">Cantidad vendida:</label>
-        <input type="number" id="quantity" name="cantidad" min="1" required>
-    
-        <button type="submit">Registrar venta</button>
-    </form>
+    <div class="sidebar">
+        <h2>InventoriWeb</h2>
+        <nav>
+            <ul>
+                <li><a href="registerProduct.html">Productos</a></li>
+                <li><a href="sales.html">Ventas</a></li>
+                <li><a href="generateReports.html">Reportes</a></li>
+                <li><a href="login.html">Cerrar sesión</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="ventas">
+        <h1>Registrar ventas</h1>
+
+        <form id="salesForm">
+            <label for="id_producto">Producto:</label>
+            <label for="quantity">Cantidad vendida:</label>
+
+            <select id="id_producto" name="id_producto"></select>
+            <input type="number" id="quantity" name="cantidad" min="1" required>
+        
+            <button type="submit" class="btnVentas">Registrar venta</button>
+        </form>
+    </div>    
+
+    <div id="filterSection" class="consultas">
+        <h1>Consulta de ventas</h1>
+        <form id="filterForm">
+            <div class="filter-group">
+                <h3>Cantidad de productos</h3>
+                <label for="minQuantity">Cantidad mínima:</label>
+                <input type="number" id="minQuantity" name="minQuantity" min="0">
+                
+                <label for="maxQuantity">Cantidad máxima:</label>
+                <input type="number" id="maxQuantity" name="maxQuantity" min="0">
+            </div>
+
+            <div class="filter-group">
+                <h3>Valor total de venta</h3>
+                <label for="minTotal">Valor total mínimo:</label>
+                <input type="number" id="minTotal" name="minTotal" min="0" step="0.01">
+                
+                <label for="maxTotal">Valor total máximo:</label>
+                <input type="number" id="maxTotal" name="maxTotal" min="0" step="0.01">
+            </div>
+
+            <div class="filter-group">
+                <h3>Productos</h3>
+                <div id="productSelectContainer">
+                    <select id="productFilter" name="products" multiple>
+                        <!-- Se llenará dinámicamente con JavaScript -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Rango de fechas</h3>
+                <label for="startDate">Fecha inicial:</label>
+                <input type="date" id="startDate" name="startDate">
+                
+                <label for="endDate">Fecha final:</label>
+                <input type="date" id="endDate" name="endDate">
+            </div>
+
+            <div class="regVenta">
+                <button type="submit">Aplicar filtros</button>
+                <button type="reset">Limpiar filtros</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="salesListSection" class="resultados">
+        <h1>Ventas realizadas</h1>
+        <table id="salesTable">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Valor unitario</th>
+                    <th>Valor total</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
     <script src="js/sales.js"></script>
 
 </body>

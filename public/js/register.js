@@ -21,6 +21,8 @@ document.getElementById('registerForm').addEventListener('submit', (e) => {
       .then((data) => {
           console.log(data);
           alert('Registro exitoso');
+          document.getElementById("registerForm").reset();
+
       })
       .catch((error) => {
           console.error('Error:', error);

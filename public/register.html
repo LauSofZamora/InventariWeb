@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario</title>
+    <title>InventoriWeb</title>
+    <link rel="icon" href="assets/Logo InventoriWeb favicon.png" type="image/png">
+    <link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
     <form id="registerForm">
+        <h1 class="titulo">
+            <img src="assets/Logo InventoriWeb.png" alt="Logo" width="100" height="110">
+            InventoriWeb</h1>
+        <h1>Registro</h1>
         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required />
-        <input type="email" id="email" name="email" placeholder="Correo Electrónico" required />
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required />
         <input type="password" id="password" name="password" placeholder="Contraseña" required />
         <button type="submit">Registrarse</button>
+        <a href="login.html" class="iniciar">Tienes cuenta? Inicia sesión!</a>
     </form>
     <script src="/js/register.js"></script>
 </body>

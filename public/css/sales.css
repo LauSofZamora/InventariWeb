@@ -1,0 +1,361 @@
+@font-face {
+    font-family: funnydays;
+    src: url(../font/FunnyDays.otf);
+}
+
+h1 {
+    font-family: funnydays;
+    font-size: 55px;
+    text-align: center;
+    color: #658faf;
+    margin: 0;
+    padding: 10px 15px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.ventas, .consultas {
+    margin-left: 260px;
+    padding: 20px;
+    flex: 1;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.resultados {
+    margin-left: 260px;
+    padding: 20px;
+    flex: 1;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    overflow-x: auto;
+}
+
+div {
+    margin: 0 0 0;
+}
+
+form{
+    display: grid;
+    flex-direction: column;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+form input, form select{
+    width: 90%;
+    max-width: 800px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #6bbfff;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font: 16px Arial, sans-serif;
+    text-align: center;
+}
+
+div #productFilter{
+    height: 148px;
+    width: 95%;
+    max-width: 800px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #6bbfff;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font: 16px Arial, sans-serif;
+    text-align: center;
+}
+
+form input:focus, form select:focus {
+    border-color: #ff99cc;
+    box-shadow: 0 0 5px rgba(255, 153, 204, 0.5);
+    outline: none;
+}
+
+form button {
+    width: 50%;
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
+    justify-self: center; 
+}
+
+div .regVenta {
+    display: flex;
+    gap: 10px;
+    align-items: center; 
+    grid-column: span 2;
+}
+
+form .btnVentas {
+    margin: 10px;
+    grid-column: span 2; 
+}
+
+form button:hover {
+    background: linear-gradient(135deg, #ff99cc, #6bbfff);
+    transform: scale(1.05);
+}
+
+form button:active {
+    transform: scale(0.95);
+}
+
+#filterSection h3 {
+    font-size: 20px;
+    color: #994892;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-group h3 {
+    font-size: 16px;
+    color: #555;
+}
+
+#filterSection button {
+    width: calc(50% - 10px);
+    margin: 10px 5px 0 0;
+}
+
+#salesListSection {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#salesListSection h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#salesTable {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+}
+
+#salesTable th, #salesTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+#salesTable th {
+    background-color: #6bbfff;
+    color: white;
+    font-size: 16px;
+}
+
+#salesTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#salesTable tr:hover {
+    background-color: #ffb4da;
+}
+
+/* Responsividad */
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .ventas, .consultas, .resultados {
+        margin-left: 210px;
+        width: calc(100% - 230px);
+        max-width: none;
+    }
+
+    .filter-group {
+        margin-right: 10px;
+    }
+    
+    form {
+        grid-template-columns: 1fr;
+    }
+    
+    form input, form select {
+        width: 100%;
+    }
+    
+    h1 {
+        font-size: 45px;
+    }
+}
+
+/* Dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+    }
+    
+    .sidebar nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .sidebar nav ul li {
+        margin: 5px;
+    }
+    
+    .sidebar nav ul li a {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+    
+    .ventas, .consultas, .resultados {
+        margin-left: 0;
+        width: 90%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 35px;
+        padding: 8px 10px;
+    }
+    
+    form input, form select {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+/* Dispositivos muy pequeños */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+    
+    .sidebar h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .sidebar nav ul li a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    form {
+        gap: 8px;
+    }
+    
+    form input, form select {
+        width: 95%;
+        font-size: 13px;
+        padding: 5px;
+    }
+    
+    .ventas, .consultas, .resultados {
+        padding: 10px;
+        margin: 8px auto;
+    }
+}
+
+/* Optimización para dispositivos táctiles */
+@media (hover: none) {
+    .sidebar nav ul li a:hover {
+        background: none;
+    }
+    
+    .sidebar nav ul li a:active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}

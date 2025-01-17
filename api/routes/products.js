@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../config/database');
-const productController = require('../controllers/productController');
 const verifyToken = require('../middlewares/authMiddleware');
 
 // Controlador para registrar productos
@@ -27,7 +26,8 @@ router.get('/', verifyToken, async (req, res) => {
     const userId = req.user.id;
 
     try {
-        const query = 'SELECT * FROM productos WHERE id_usuario = ?';
+        const query = 'SELECT * FROM productos WHERE id_usuario = ? ORDER BY fecha_creacion DESC';
+        
         const [products] = await db.query(query, [userId]);
         res.status(200).json({ productos: products });
     } catch (err) {
@@ -75,6 +75,27 @@ router.get('/:id', verifyToken, async (req, res) => {
         res.status(200).json(products[0]);
     } catch (err) {
         res.status(500).json({ message: 'Error al obtener el producto.', error: err.message });
+    }
+});
+
+// Ruta para archivar un producto
+router.put('/:id/archivar', verifyToken, async (req, res) => {
+    const { id } = req.params;
+    const { archivado } = req.body; // true o false
+
+    try {
+        const query = `UPDATE productos SET archivado = ? WHERE id_producto = ? AND id_usuario = ?`;
+        const params = [archivado, id, req.user.id];
+        const [result] = await db.query(query, params);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Producto no encontrado o no autorizado.' });
+        }
+
+        res.json({ message: 'Producto actualizado correctamente.' });
+    } catch (error) {
+        console.error('Error al archivar producto:', error);
+        res.status(500).json({ message: 'Error al archivar producto.' });
     }
 });
 

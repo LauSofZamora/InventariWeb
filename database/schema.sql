@@ -23,6 +23,7 @@ CREATE TABLE productos (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     archivado BOOLEAN DEFAULT FALSE,  -- Campo para archivar el producto
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
 
 -- Crear la tabla de ventas
 CREATE TABLE IF NOT EXISTS ventas (

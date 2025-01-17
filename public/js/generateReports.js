@@ -50,7 +50,7 @@ document.getElementById('reportForm').addEventListener('submit', async function(
 
         // Poblar la tabla de reportes
         const reportTableBody = document.querySelector('#reportTable tbody');
-        reportTableBody.innerHTML = ''; // Limpiar tabla existente
+        reportTableBody.innerHTML = '';
 
         if (data.ventas.length === 0) {
             const row = document.createElement('tr');
@@ -60,11 +60,11 @@ document.getElementById('reportForm').addEventListener('submit', async function(
             data.ventas.forEach(venta => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${venta.id_venta}</td>
                     <td>${venta.producto}</td>
                     <td>${venta.cantidad}</td>
                     <td>${new Date(venta.fecha).toLocaleDateString()}</td>
-                    <td>$${parseFloat(venta.total).toFixed(2)}</td>
+                    <td>$${parseFloat(venta.precio).toFixed(0)}</td>
+                    <td>$${parseFloat(venta.total).toFixed(0)}</td>
                 `;
                 reportTableBody.appendChild(row);
             });

@@ -3,43 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Producto</title>
+    <title>InventoriWeb</title>
+    <link rel="icon" href="assets/Logo InventoriWeb favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/registerProduct.css">
 </head>
 <body>
-    <div>
-        <h1>Registrar Producto</h1>
+    <div class="sidebar">
+        <h2>InventoriWeb</h2>
+        <nav>
+            <ul>
+                <li><a href="registerProduct.html">Productos</a></li>
+                <li><a href="sales.html">Ventas</a></li>
+                <li><a href="generateReports.html">Reportes</a></li>
+                <li><a href="login.html">Cerrar sesión</a></li>
+                <img class="logo" src="assets/Logo InventoriWeb.png" alt="Logo">
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="contenido">
+        <h1>Registrar productos</h1>
         <form id="productForm">
-            <input type="text" name="nombre" placeholder="Nombre del producto" required />
-            <textarea name="caracteristicas" placeholder="Características"></textarea>
-            <input type="number" name="precio" placeholder="Precio" required />
-            <input type="number" name="cantidad" placeholder="Cantidad" required />
-            <input type="text" name="imagen" placeholder="URL de la imagen" />
-            <button type="submit">Registrar</button>
+
+            <div class="filter-group">
+                <label for="nombre">Producto:</label>
+                <input type="text" name="nombre" placeholder="Nombre del producto" min="1" required />
+
+                <label for="caracteristicas">Características:</label>
+                <textarea name="caracteristicas" placeholder="Características del producto"></textarea>
+            </div>   
+
+            <div class="filter-group">
+                <label for="precio">Precio:</label>
+                <input type="number" name="precio" placeholder="Precio del producto" required />
+
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" name="cantidad" placeholder="Cantidad del producto" min="0" required />
+            </div>    
+
+            <div class="url">
+                <label for="imagen">Imagen:</label>
+                <input type="text" name="imagen" placeholder="URL de la imagen del producto" />
+            </div>
+                <button type="submit"><b>Registrar</b></button>
         </form>
-        <script src="js/registerProduct.js"></script>
-    </div> 
+    </div>
 
     <!-- Lista de productos -->
-    <div id="productList">
-        <!-- Los productos aparecerán aquí -->
+     <div class="inventario">
+        <h1>Productos registrados</h1>
+        <div id="productList">
+            <!-- Los productos aparecerán aquí -->
+        </div>
     </div>
 
-    <div id="editForm" style="display:none;">
-        <h2>Editar Producto</h2>
-        <form id="editProductForm" onsubmit="editProduct(event)">
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="editNombre" required>
-            <label for="caracteristicas">Características:</label>
-            <input type="text" name="caracteristicas" id="editCaracteristicas">
-            <label for="precio">Precio:</label>
-            <input type="number" name="precio" id="editPrecio" required>
-            <label for="cantidad">Cantidad:</label>
-            <input type="number" name="cantidad" id="editCantidad" required>
-            <label for="imagen">Imagen:</label>
-            <input type="text" name="imagen" id="editImagen">
-            <button type="submit">Guardar cambios</button>
-        </form>
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h1>Editar producto</h1>
+            <form id="editForm" onsubmit="editProduct(event)">
+                <div class="filter-group">
+                    <label for="editNombre">Nombre:</label>
+                    <input type="text" id="editNombre" name="nombre" required>
+    
+                    <label for="editCaracteristicas">Características:</label>
+                    <textarea id="editCaracteristicas" name="caracteristicas" required></textarea>
+                </div>    
+    
+                <div class="filter-group">
+                    <label for="editPrecio">Precio:</label>
+                    <input type="number" id="editPrecio" name="precio" step="0.01" required>
+        
+                    <label for="editCantidad">Cantidad:</label>
+                    <input type="number" id="editCantidad" name="cantidad" required>
+                </div>
+
+                <div class="url">
+                    <label for="editImagen">Imagen:</label>
+                    <input type="text" id="editImagen" name="imagen">
+                </div>
+                <button type="submit">Actualizar</button>
+            </form>
+        </div>
     </div>
+
+    <div id="archiveModal" class="modal">
+        <div class="modal-content">
+            <span id="closeArchiveModal" class="close">&times;</span>
+            <p id="archiveMessage"></p>
+            <div class="btnArchivar">
+                <button id="confirmArchiveButton">Confirmar</button>
+                <button id="cancelArchiveButton">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/registerProduct.js"></script>
 
 </body>
 </html>

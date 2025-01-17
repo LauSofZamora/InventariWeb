@@ -1,0 +1,326 @@
+@font-face {
+    font-family: funnydays;
+    src: url(../font/FunnyDays.otf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.contenido, .inventario , .editar{
+    margin-left: 260px;
+    padding: 20px;
+    flex: 1;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+div {
+    margin: 0 0 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-size: 20px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1 {
+    font-family: funnydays;
+    font-size: 55px;
+    text-align: center;
+    color: #658faf;
+    margin: 0;
+    padding: 10px 15px;
+}
+
+form {
+    display: grid;
+    flex-direction: column;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+form input, form textarea {
+    width: 90%;
+    max-width: 800px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #6bbfff;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font: 16px Arial, sans-serif;
+    text-align: center;
+}
+
+div .url{
+    gap: 10px;
+    grid-column: span 2;
+    padding: 10px;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #ff99cc;
+    box-shadow: 0 0 5px rgba(255, 153, 204, 0.5);
+    outline: none;
+}
+
+form button, .btnArchivar button {
+    width: 30%;
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 19px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    grid-column: span 2; 
+    justify-self: center; 
+    margin: 10px;
+}
+
+form button:hover, .btnArchivar button:hover {
+    background: linear-gradient(135deg, #ff99cc, #6bbfff);
+    transform: scale(1.05);
+}
+
+form button:active, .btnArchivar button:active {
+    transform: scale(0.95);
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.logo {
+    width: 110px;
+    height: 110px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#productList button {
+    background: linear-gradient(135deg, #ff99cc, #6bbfff);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#productList button:hover {
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    transform: scale(1.1);
+}
+
+#productList button:active {
+    transform: scale(0.9);
+}
+
+
+/* Responsive */
+/* Tablets y pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .contenido, .inventario, .editar {
+        margin-left: 210px;
+        width: calc(100% - 230px);
+        max-width: none;
+    }
+    
+    form {
+        grid-template-columns: 1fr;
+    }
+    
+    form input, form textarea {
+        width: 100%;
+    }
+    
+    div .url {
+        grid-column: span 1;
+    }
+    
+    form button {
+        grid-column: span 1;
+        width: 70%;
+    }
+}
+
+/* Dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+    }
+    
+    .sidebar nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .sidebar nav ul li {
+        margin: 5px 10px;
+    }
+    
+    .contenido, .inventario, .editar {
+        margin-left: 0;
+        width: 90%;
+        margin: 10px auto;
+    }
+    
+    h1 {
+        font-size: 40px;
+    }
+    
+    .product-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* Dispositivos muy pequeños */
+@media screen and (max-width: 480px) {
+    form input, form textarea {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 30px;
+    }
+    
+    .sidebar nav ul li a {
+        font-size: 16px;
+        padding: 8px;
+    }
+    
+    form button {
+        width: 90%;
+    }
+    
+    img {
+        width: 80px;
+        height: 80px;
+    }
+}

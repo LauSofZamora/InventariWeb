@@ -1,0 +1,165 @@
+@font-face {
+    font-family: funnydays;
+    src: url(../font/FunnyDays.otf);
+}
+
+body {
+    margin: 0;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    text-align: center;
+    color: #658faf;
+    margin: 0;
+    padding: 5px;
+}
+
+.titulo{
+    font-family: funnydays;
+    font-size: 90px;
+    color: #ff99cc98;
+}
+
+#registerForm {
+    background: rgba(255, 255, 255, 0.719);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#registerForm input {
+    width: 90%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 1px solid #6bbfff;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#registerForm input:focus {
+    border-color: #ff99cc;
+    box-shadow: 0 0 5px rgba(255, 153, 204, 0.5);
+    outline: none;
+}
+
+#registerForm button {
+    background: linear-gradient(135deg, #6bbfff, #ff99cc);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    width: 90%;
+}
+
+#registerForm button:hover {
+    background: linear-gradient(135deg, #ff99cc, #6bbfff);
+    transform: scale(1.05);
+}
+
+#registerForm button:active {
+    transform: scale(0.95);
+}
+
+/* Dispositivos móviles */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    .titulo {
+        font-size: 50px;
+    }
+
+    h1 {
+        font-size: 25px;
+        padding: 3px;
+    }
+
+    #registerForm {
+        padding: 15px;
+        max-width: 300px;
+    }
+
+    #registerForm input {
+        padding: 8px 12px;
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+    #registerForm button {
+        padding: 8px 12px;
+        font-size: 14px;
+        margin: 8px;
+    }
+}
+
+/* Dispositivos muy pequeños */
+@media screen and (max-width: 320px) {
+    .titulo {
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #registerForm {
+        padding: 10px;
+    }
+
+    #registerForm input,
+    #registerForm button {
+        width: 90%;
+        margin: 6px 0;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+    }
+
+    .titulo {
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #registerForm {
+        padding: 15px;
+    }
+
+    #registerForm input,
+    #registerForm button {
+        margin: 5px 0;
+        padding: 6px 10px;
+    }
+}
+
